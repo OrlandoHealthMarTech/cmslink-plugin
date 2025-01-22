@@ -1,6 +1,8 @@
 // contents of webpack.config.js
 const path = require('path');
 const pkg = require('./package.json');
+const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: `./src/${pkg.entry}.tsx`,
@@ -40,4 +42,7 @@ module.exports = {
       'Access-Control-Allow-Origin': '*',
     },
   },
+  plugins: [
+    new Dotenv(),
+  ],
 };

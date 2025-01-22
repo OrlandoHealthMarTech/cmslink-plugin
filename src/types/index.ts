@@ -1,3 +1,3 @@
 export * from './ModelInstance';
-export * from './ComplexLinkProps'; 
+export * from './CMSLinkProps'; 
 export * from './ModelSelectorProps';

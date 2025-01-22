@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, useCallback } from "react";
-import { styles } from "./ComplexLink.styles";
+import { styles } from "./CMSLink.sytles";
 import { ModelInstance } from "../types";
 import { builder } from "@builder.io/react";
 
@@ -14,7 +14,7 @@ const MODEL_TYPES = {
   BLOG: "blog",
 } as const;
 
-builder.init("9d9c17771b684627bed7d61d5f05ef44");
+builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
 const ModelSelector: React.FC<ModelSelectorProps> = ({
   href,

@@ -1,4 +1,4 @@
-export interface ComplexLinkProps {
+export interface CMSLinkProps {
     value: {
         get(key: "type" | "href" | "model" | "referenceId"): string | undefined;
         type: string;

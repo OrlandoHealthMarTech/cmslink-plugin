@@ -1,7 +1,7 @@
 {
   "name": "cms-link-plugin",
   "version": "1.0.0",
-  "description": "complex link plugin",
+  "description": "builder.io CMS Link plugin",
   "entry": "plugin",
   "output": "plugin.system.js",
   "main": "dist/plugin.system.js",
@@ -21,8 +21,10 @@
     "@builder.io/app-context": "^1.0.0",
     "@builder.io/react": "^7.0.1",
     "@emotion/core": "^11.0.0",
+    "@types/node": "^22.10.7",
     "@types/react": "^18.3.12",
     "babel-loader": "^8.2.5",
+    "dotenv-webpack": "^8.0.1",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.10.0"
