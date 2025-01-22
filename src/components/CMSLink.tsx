@@ -138,16 +138,7 @@ const CMSLink: React.FC<CMSLinkProps> = ({
         </div>
       )}
 
-      <div
-        style={{
-          marginTop: "20px",
-          padding: "10px",
-          background: "#f5f5f5",
-          borderRadius: "4px",
-          fontSize: "12px",
-          fontFamily: "monospace",
-        }}
-      >
+      {process.env.NEXT_PUBLIC_DEBUG === "true" && (
         <pre>
           {JSON.stringify(
             {
@@ -161,7 +152,7 @@ const CMSLink: React.FC<CMSLinkProps> = ({
             2
           )}
         </pre>
-      </div>
+      )}
     </div>
   );
 };
