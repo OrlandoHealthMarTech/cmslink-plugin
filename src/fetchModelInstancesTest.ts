@@ -7,7 +7,7 @@ const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY;
 if (!apiKey) {
     throw new Error('Builder API key is required');
 }
-builder.init(apiKey);
+builder.init(apiKey || "19ea4309187745989c31be6f73da25f8");
 
 const fetchModelInstances = async (modelType: string) => {
     const content = await builder.getAll("page", {
