@@ -15,7 +15,7 @@ const MODEL_TYPES = {
 } as const;
 
 const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "19ea4309187745989c31be6f73da25f8";
-console.warn('Builder API key:', apiKey);
+
 builder.init(apiKey);
 
 const ModelSelector: React.FC<ModelSelectorProps> = ({
