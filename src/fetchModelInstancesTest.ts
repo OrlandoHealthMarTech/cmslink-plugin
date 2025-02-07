@@ -3,18 +3,22 @@ import { builder } from '@builder.io/react';
 // Mock the environment variable
 process.env.NEXT_PUBLIC_BUILDER_API_KEY = '9d9c17771b684627bed7d61d5f05ef44'; // Replace with a valid API key
 
-const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY;
+const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "19ea4309187745989c31be6f73da25f8";
 if (!apiKey) {
+    console.warn('Builder API key missing');
     throw new Error('Builder API key is required');
 }
-builder.init(apiKey || "19ea4309187745989c31be6f73da25f8");
+console.log('Builder intiated with API key:', apiKey);
+builder.init(apiKey);
 
 const fetchModelInstances = async (modelType: string) => {
+    console.log('Fetching model instances for:', modelType);
     const content = await builder.getAll("page", {
         fields: "id, data.url, name",
         options: { noTargeting: true },
     });
-
+    console.log('Fetched content:', content);
+    
     return content.map((item: any) => ({
         id: item.id,
         href: item.data?.url || '',
