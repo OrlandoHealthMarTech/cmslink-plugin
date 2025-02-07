@@ -14,7 +14,9 @@ const MODEL_TYPES = {
   BLOG: "blog",
 } as const;
 
-builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
+const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "19ea4309187745989c31be6f73da25f8";
+console.log('Builder API key:', apiKey);
+builder.init(apiKey);
 
 const ModelSelector: React.FC<ModelSelectorProps> = ({
   href,
@@ -29,11 +31,12 @@ const ModelSelector: React.FC<ModelSelectorProps> = ({
   const fetchInstances = useCallback(async (type: string) => {
     setIsLoading(true);
     try {
+      console.log('Fetching instances for:', type);
       const content = await builder.getAll(type, {
         fields: "id,data.url,name",
         options: { noTargeting: true },
       });
-
+      console.log('Fetched instances:', content);
       setInstances(
         content.map((item: any) => ({
           id: item.id || "",
