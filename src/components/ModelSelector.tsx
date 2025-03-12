@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent, useCallback } from "react";
 import { styles } from "./CMSLink.sytles";
 import { ModelInstance } from "../types";
 import { builder } from "@builder.io/react";
-
+import { settings } from "../settings";
 interface ModelSelectorProps {
   href: string;
   referenceId: string;
@@ -16,7 +16,7 @@ const MODEL_TYPES = {
 
 const apiKey = process.env.NEXT_PUBLIC_BUILDER_API_KEY || "19ea4309187745989c31be6f73da25f8";
 
-//builder.init(apiKey);
+
 
 const ModelSelector: React.FC<ModelSelectorProps> = ({
   href,
@@ -34,7 +34,10 @@ const ModelSelector: React.FC<ModelSelectorProps> = ({
       console.log('Fetching instances for:', type);
       const content = await builder.getAll(type, {
         fields: "id,data.url,name",
-        options: { noTargeting: true },
+        options: { 
+          noTargeting: true,
+          apiKey:  "19ea4309187745989c31be6f73da25f8"
+         }
       });
       console.log('Fetched instances:', content);
       setInstances(
@@ -109,9 +112,9 @@ const ModelSelector: React.FC<ModelSelectorProps> = ({
                 onChange={handleModelTypeChange}
               >
                 <option value="">Select a model type...</option>
-                {Object.entries(MODEL_TYPES).map(([key, value]) => (
-                  <option key={value} value={value}>
-                    {key.charAt(0) + key.slice(1).toLowerCase()}
+                {settings.models.map((model) => (
+                  <option key={model} value={model}>
+                    {model.charAt(0).toUpperCase() + model.slice(1)}
                   </option>
                 ))}
               </select>
